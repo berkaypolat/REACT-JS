@@ -44,3 +44,42 @@ where MyComponentClass is a component class name.
 - Whenever you make a component, that component inherits all of the methods of its component class. MyComponentClass has one method: **MyComponentClass.render()**. Therefore, <MyComponentClass /> also has a method named render.
 
 ## Components And Advanced JSX
+- **this** usually refers to an instance of the component class. It refers to the object on which *this*‘s enclosing method is called.
+- *getter* methods don't need parentheses when being called.
+- In React, you can define event handlers as methods on a component class.
+
+## Component to Component Interaction
+- Render methods can also return another kind of JSX: component instances. For example:
+```javascript
+class OMG extends React.Component {
+  render() {
+    return <h1>Whooaa!</h1>;
+  }
+}
+
+class Crazy extends React.Component {
+  render() {
+    return <OMG />;
+  }
+}
+```
+- When importing a variable from a file that is not the current file, then an import statement isn’t quite enough. Need an export statement, written in the other file, exporting the variable that you hope to grab. For example:
+```javascript
+// Manifestos.js:
+export const faveManifestos = {
+  futurist: 'http://www.artype.de/Sammlung/pdf/russolo_noise.pdf',
+  agile: 'https://agilemanifesto.org/iso/en/manifesto.html',
+  cyborg:   'http://faculty.georgetown.edu/irvinem/theory/Haraway-CyborgManifesto-1.pdf'
+};
+export const alsoRan = 'TimeCube';
+```
+Then, in another file:
+```javascript
+// App.js:
+
+// Import faveManifestos and alsoRan from ./Manifestos.js:
+import { faveManifestos, alsoRan } from './Manifestos';
+
+// Use faveManifestos:
+console.log(`A Cyborg Manifesto:  ${faveManifestos.cyborg}`);
+```
