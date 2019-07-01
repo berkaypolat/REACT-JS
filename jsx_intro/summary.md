@@ -96,7 +96,7 @@ such as *onClick* or *onMouseOver*. Take a look at *event_listener.jsx* for a
 goo understanding of it. All of the React supported events can be
 found [HERE](https://reactjs.org/docs/events.html#supported-events)
 - You can’t inject an if statement into JSX! But there are several ways to
-go around it. The files *if_statement_v1.jsx* *if_statement_v2.jsx* and  
+go around it. The files *if_statement_v1.jsx*, *if_statement_v2.jsx*, and  
 *if_statement_v3.jsx* show good examples.
 
 - The array method .map() comes very hand in React. <li> items can be put into
