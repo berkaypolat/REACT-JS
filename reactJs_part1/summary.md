@@ -16,7 +16,31 @@ ReactDOM.render(
   document.getElementById('app')
 );
 ```
-- The 'React' variable above is an object called **React Library**. This allows
+    - The 'React' variable above is an object called **React Library**. This allows
 certain methods available to us from the library itself. In fact, we need this
 variable before our code can compile JSX at all, due to compiling happening with
 the *React.createElement()* method.
+    - The 'ReactDom' also import javascript object which contains React-related
+    methods. These methods from 'react-dom' are meant for interacting with the
+    DOM.Methods imported from **'react'** don't deal with the DOM, there are
+    only for pure react purposes.
+- **React.Component** is a JavaScript class. To create your own component class,
+ you must subclass React.Component. You can do this by using the syntax:
+```javascript
+ class YourComponentNameGoesHere extends React.Component {};
+ ```
+ Some useful resource for classes and subclasses: [1](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [2](https://hacks.mozilla.org/2015/07/es6-in-depth-classes/), [3](https://hacks.mozilla.org/2015/08/es6-in-depth-subclassing/),[4](https://exploringjs.com/es6/ch_classes.html)
+
+- The **"render()"** property has to be in the body of component class.
+- JSX elements can be either HTML-like, or component instances. JSX uses capitalization to distinguish between the two. For instance, to use a component
+instance inside ReactDOM.render():
+```javascript
+ReactDOM.render(
+	<MyComponentClass />,
+	document.getElementById('app')
+);
+```
+where MyComponentClass is a component class name.
+- Whenever you make a component, that component inherits all of the methods of its component class. MyComponentClass has one method: **MyComponentClass.render()**. Therefore, <MyComponentClass /> also has a method named render.
+
+## Components And Advanced JSX
