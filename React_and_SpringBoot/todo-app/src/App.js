@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import AnotherComponent, {SecondComponent} from './Components/AnotherComponent';
 import './App.css';
 import './bootstrap.css';
-import Counter from './Components/counter/Counter';
 import TodoApp from './Components/todo/TodoApp';
+
+// eslint-disable-next-line
+import Counter from './Components/counter/Counter';
 
 
 class App extends Component{
@@ -16,6 +18,7 @@ class App extends Component{
   }
 }
 
+// eslint-disable-next-line
 class LearningComponents extends Component{
     render() {
       return (

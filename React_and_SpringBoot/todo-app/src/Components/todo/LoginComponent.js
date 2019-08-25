@@ -37,15 +37,33 @@ class LoginComponent extends Component{
     }
 
     loginClicked(){
-        if(this.state.username === 'berkayp' && this.state.password === '123'){
-            AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
+        // if(this.state.username === 'berkayp' && this.state.password === '123'){
+        //     AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
+        //     this.props.history.push(`/welcome/${this.state.username}`);
+        //     //this.setState({showSuccessMessage: true});
+        //     //this.setState({hasLoginFailed: false});
+        // }else{
+        //     this.setState({showSuccessMessage: false});
+        //     this.setState({hasLoginFailed: true});
+        // }
+
+        // AuthenticationService.executeBasicAuthService(this.state.username, this.state.password)
+        // .then(() => {
+        //     AuthenticationService.registerSuccessfulLogin(this.state.username, this.state.password);
+        //     this.props.history.push(`/welcome/${this.state.username}`);
+        // }).catch(() => {
+        //     this.setState({showSuccessMessage: false});
+        //     this.setState({hasLoginFailed: true});
+        // });
+
+        AuthenticationService.executeJWTAuthService(this.state.username, this.state.password)
+        .then((response) => {
+            AuthenticationService.registerSuccessfulLoginJWT(this.state.username, response.data.token);
             this.props.history.push(`/welcome/${this.state.username}`);
-            //this.setState({showSuccessMessage: true});
-            //this.setState({hasLoginFailed: false});
-        }else{
+        }).catch(() => {
             this.setState({showSuccessMessage: false});
             this.setState({hasLoginFailed: true});
-        }
+        });
     }
 
     render(){
@@ -66,7 +84,9 @@ class LoginComponent extends Component{
     }
 }
 
+
 //simplied with inline logic jsx expression
+// eslint-disable-next-line
 function ShowInvalidCredentials(props){
     if (props.hasLoginFailed){
         return <div>Invalid Credentials</div>
@@ -74,7 +94,9 @@ function ShowInvalidCredentials(props){
     return null;
 }
 
+
 //simplied with inline logic jsx expression
+// eslint-disable-next-line
 function ShowLoginSuccessMessage(props){
     if (props.showSuccessMessage){
         return <div>Login Successful!</div>

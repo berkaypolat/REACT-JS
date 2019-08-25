@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.submitForm {
+    width: 600px;
+}
+
 .table>thead{
     background-color: black;
     color: white;
